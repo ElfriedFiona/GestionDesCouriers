@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestion des courriers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><h1>📮 Gestion des courriers</h1></header>
+  <main>
+    <section id="stats" class="cards"></section>
+
+    <section class="panel">
+      <h2>Nouveau courrier</h2>
+      <form id="form">
+        <select name="type" required>
+          <option value="entrant">Entrant</option>
+          <option value="sortant">Sortant</option>
+          <option value="interne">Interne</option>
+        </select>
+        <input name="objet" placeholder="Objet" required minlength="3" maxlength="150">
+        <textarea name="contenu" placeholder="Contenu / description" required></textarea>
+        <input name="nom" placeholder="Expéditeur / destinataire">
+        <input name="email" type="email" placeholder="E-mail (optionnel)">
+        <input name="service" placeholder="Service concerné">
+        <select name="priorite">
+          <option value="normal">Priorité normale</option>
+          <option value="low">Basse</option>
+          <option value="high">Haute</option>
+          <option value="urgent">Urgente</option>
+        </select>
+        <button type="submit">Enregistrer</button>
+      </form>
+      <p id="msg"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Courriers</h2>
+      <div class="filters">
+        <input id="q" placeholder="Rechercher…">
+        <select id="fType"><option value="">Tous types</option><option value="entrant">Entrant</option><option value="sortant">Sortant</option><option value="interne">Interne</option></select>
+        <select id="fStatut"><option value="">Tous statuts</option><option value="enregistre">Enregistré</option><option value="en_traitement">En traitement</option><option value="en_attente">En attente</option><option value="traite">Traité</option></select>
+        <button id="btnFiltrer">Filtrer</button>
+      </div>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Réf.</th><th>Objet</th><th>Type</th><th>Priorité</th><th>Statut</th><th>Date</th></tr></thead>
+          <tbody id="liste"></tbody>
+        </table>
+      </div>
+      <div class="pager"><button id="prev">◀</button><span id="pageNum">1</span><button id="next">▶</button></div>
+    </section>
+  </main>
+
+  <dialog id="detail">
+    <div id="detailBody"></div>
+    <button id="fermer">Fermer</button>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
